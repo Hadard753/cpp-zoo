@@ -139,6 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="allClasses.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="allClasses.cpp" />
+    <ClCompile Include="MainTrain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
