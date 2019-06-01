@@ -5,6 +5,38 @@ using namespace std;
 //Train
 int main()
 {
+	ofstream OutFile("test.txt");
+	if (!OutFile.is_open())
+	{
+		cout << "Error opening output1.txt!\n";
+		return 0;
+	}
+	char* name = new char[11];
+	strcpy(name, "Hadar Dayan");
+	OutFile << strlen(name) << endl;
+	OutFile << name << endl;
+	OutFile.close();
+
+	ifstream InFile("test.txt");
+	if (!InFile.is_open())
+	{
+		cout << "Error opening output1.txt!\n";
+		return 0;
+	}
+	int len;
+	InFile >> len;
+	char* name1 = new char[len +1];
+	InFile.getline(name1, len + 1); // Call just to go one row down
+	InFile.getline(name1, len + 1); // Actually reading the line with name
+	name1[len] = '\0';
+	InFile.close();
+
+	cout << "name is " << name1 << endl;
+	cout << "len is " << len << endl;
+
+
+
+
 	//section 1 - create a zoo and save to file output.txt
 	Zoo z1( "Zoological Center Tel Aviv Ramat Gan Safari Israel", "1 Hatzvi Ave, Ramat Gan", 90, "8:00", "20:00" );
 
@@ -39,7 +71,7 @@ int main()
 	//section 3 - use more operators
 	Zoo z3 = z2 + z1;
 	GoldFish* gf = new GoldFish( "GOLD", 5, 1, 3, 2, 100, 3, 0.3f, 0.7f );
-	//z3 += gf;
+	z3 += gf;
 
 	ofstream OutFile3( "output3.dat", ios::out | ios::binary | ios::trunc );
 	if( !OutFile3.is_open() )

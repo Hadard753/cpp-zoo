@@ -23,8 +23,8 @@ public:
 
 public:
 	virtual void Save(ofstream& ofs) const;//method to save the info to a text file
-	//virtual void Load(ifstream& ifs);//method to load the info from a text file
-	//virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
+	virtual void Load(ifstream& ifs);//method to load the info from a text file
+	virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
 
 public:
 	const char* GetColor() const;//return the color of the animal
@@ -50,8 +50,8 @@ public:
 
 public:
 	virtual void Save(ofstream& ofs) const;//method to save the info to a text file
-	//virtual void Load(ifstream& ifs);//method to load the info from a text file
-	//virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
+	virtual void Load(ifstream& ifs);//method to load the info from a text file
+	virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
 
 public:
 	float		GetPregnanceTime() const;//return the pregnance time of the animal
@@ -75,8 +75,8 @@ public:
 
 public:
 	virtual void Save(ofstream& ofs) const;//method to save the info to a text file
-	//virtual void Load(ifstream& ifs);//method to load the info from a text file
-	//virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
+	virtual void Load(ifstream& ifs);//method to load the info from a text file
+	virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
 
 public:
 	float		GetIncubationTime() const;//return the incubation time of the animal
@@ -98,8 +98,8 @@ public:
 
 public:
 	virtual void Save(ofstream& ofs) const;//method to save the info to a text file
-	//virtual void Load(ifstream& ifs);//method to load the info from a text file
-	//virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
+	virtual void Load(ifstream& ifs);//method to load the info from a text file
+	virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
 
 public:
 	int		GetFinCount() const;//return the fin count of the animal
@@ -123,8 +123,8 @@ public:
 
 public:
 	virtual void Save(ofstream& ofs) const;//method to save the info to a text file
-	//virtual void Load(ifstream& ifs);//method to load the info from a text file
-	//virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
+	virtual void Load(ifstream& ifs);//method to load the info from a text file
+	virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
 
 public:
 	const char*		GetType() const;//return the type of the horse
@@ -246,7 +246,9 @@ public:
 
 public:
 	Zoo& operator+( Animal* an );//adds an animal (only pointer, no copy needed) to the class and returns this with the change
+	Zoo& operator+=( Animal* an );//adds an animal (only pointer, no copy needed) to the class and returns this with the change
 	Zoo operator+( const Zoo& other ) const; //returns a new Zoo with the properties of this and animals of this and other (need to deep copy the data of other)
+	Zoo operator=( Zoo other);
 
 public:
 	friend ofstream& operator<<( ofstream& out, const Zoo& z );//operator to write the zoo to a text file
