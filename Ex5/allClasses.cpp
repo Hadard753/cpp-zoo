@@ -24,10 +24,7 @@ Animal::Animal(ifstream& in_file) : m_childCount(0), m_avgLifetime(0), m_color(N
 	in_file.read((char*)&m_avgLifetime, sizeof(m_avgLifetime));
 };
 
-Animal::~Animal() {
-	if (m_color)
-		delete m_color;
-};
+Animal::~Animal() {};
 
 
 Animal* Animal::clone() {
@@ -206,7 +203,7 @@ Horse::Horse(ifstream& in_file) : Mammals(in_file) {
 	in_file.read(m_type, len);
 	m_type[len] = '\0';
 };//init the Horse from a binary file
-Horse::~Horse() { delete m_type; };
+Horse::~Horse() { };
 
 Animal* Horse::clone() {
 	return new Horse(m_color, m_childCount, m_avgLifetime, m_pregnancyTime, m_milkLiters, m_type);
@@ -371,12 +368,7 @@ Mermaid::Mermaid(ifstream& in_file) : MammalsFish(in_file) {
 	m_lastName[len] = '\0';
 
 };//init the Mermaid from a binary file
-Mermaid::~Mermaid() {
-	if (m_firstName)
-		delete m_firstName;
-	if (m_lastName)
-		delete m_lastName;
-};
+Mermaid::~Mermaid() {};
 
 Animal* Mermaid::clone() {
 	return new Mermaid(m_color, m_childCount, m_avgLifetime, m_pregnancyTime, m_milkLiters, m_finCount, m_gillsCount, m_firstName, m_lastName);
@@ -509,23 +501,7 @@ Zoo::Zoo(ifstream& in_file) {
 		delete type;
 	}
 };//c'tor that gets a binary file and loads the data of the zoo from the file
-Zoo::~Zoo() {
-	if (m_name)
-		delete m_name;
-	if (m_address)
-		delete m_address;
-	if (m_openHours)
-		delete m_openHours;
-	if (m_closeHours)
-		delete m_closeHours;
-	/*for (int i = 0; i < m_numOfAnimals; i++)
-	{
-		if(m_animals[i])
-			delete m_animals[i];
-	}*/
-	if (m_animals)
-		delete[] m_animals;
-};//d'tor
+Zoo::~Zoo() {};//d'tor
 
 
 const char*		Zoo::GetName() const { return m_name; };//return the name of the zoo

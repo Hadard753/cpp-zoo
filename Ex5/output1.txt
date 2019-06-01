@@ -8,16 +8,20 @@ Zoological Center Tel Aviv Ramat Gan Safari Israel
 5
 20:00
 2
-5Horse
-4GRAY
+5
+Horse
+4
+GRAY
 0
 0
 11
 3
 14
 Selle Francais
-7Mermaid
-4GRAY
+7
+Mermaid
+4
+GRAY
 0
 0
 9
