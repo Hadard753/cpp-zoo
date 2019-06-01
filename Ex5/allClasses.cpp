@@ -35,8 +35,8 @@ Animal* Animal::clone() {
 };
 void Animal::Save(ofstream& ofs) const {
 	int len = strlen(typeid(*this).name()) - 6;
-	ofs << len << endl << typeid(*this).name() + 6 << endl;
-	ofs << strlen(m_color) << endl << m_color << endl;
+	ofs << len << typeid(*this).name() + 6 << endl;
+	ofs << strlen(m_color) << m_color << endl;
 	ofs << m_childCount << endl;
 	ofs << m_avgLifetime << endl;
 };//method to save the info to a text file
@@ -44,7 +44,6 @@ void Animal::Load(ifstream& ifs) {
 	int len;
 	ifs >> len;
 	m_color = new char[len + 1];
-	ifs.getline(m_color, len);
 	ifs.getline(m_color, len+1);
 	m_color[len] = '\0';
 	ifs >> m_childCount;
@@ -93,15 +92,17 @@ Animal* Mammals::clone() {
 	return new Mammals(m_color, m_childCount, m_avgLifetime, m_pregnancyTime, m_milkLiters);
 };
 void Mammals::Save(ofstream& ofs) const {
-	//Animal::Save(ofs);
+	Animal::Save(ofs);
 	ofs << m_pregnancyTime << endl;
 	ofs << m_milkLiters << endl;
 };//method to save the info to a text file
 void Mammals::Load(ifstream& ifs) {
+	Animal::Load(ifs);
 	ifs >> m_pregnancyTime;
 	ifs >> m_milkLiters;
 };//method to load the info from a text file
 void Mammals::SaveBin(ofstream& ofs) const {
+	Animal::SaveBin(ofs);
 	ofs.write((char*)&m_pregnancyTime, sizeof(m_pregnancyTime));
 	ofs.write((char*)&m_milkLiters, sizeof(m_milkLiters));
 };//method to save the info to a binary file
@@ -135,13 +136,15 @@ Animal* Birds::clone() {
 	return new Birds(m_color, m_childCount, m_avgLifetime, m_incubationTime);
 };
 void Birds::Save(ofstream& ofs) const {
-	//Animal::Save(ofs);
+	Animal::Save(ofs);
 	ofs << m_incubationTime << endl;
 };//method to save the info to a text file
 void Birds::Load(ifstream& ifs) {
+	Animal::Load(ifs);
 	ifs >> m_incubationTime;
 };//method to load the info from a text file
 void Birds::SaveBin(ofstream& ofs) const {
+	Animal::SaveBin(ofs);
 	ofs.write((char*)&m_incubationTime, sizeof(m_incubationTime));
 };//method to save the info to a binary file
 
@@ -170,15 +173,17 @@ Animal* Fish::clone() {
 	return new Fish(m_color, m_childCount, m_avgLifetime, m_finCount, m_gillsCount);
 };
 void Fish::Save(ofstream& ofs) const {
-	//Animal::Save(ofs);
+	Animal::Save(ofs);
 	ofs << m_finCount << endl;
 	ofs << m_gillsCount << endl;
 };//method to save the info to a text file
 void Fish::Load(ifstream& ifs) {
+	Animal::Load(ifs);
 	ifs >> m_finCount;
 	ifs >> m_gillsCount;
 };//method to load the info from a text file
 void Fish::SaveBin(ofstream& ofs) const {
+	Animal::SaveBin(ofs);
 	ofs.write((char*)&m_finCount, sizeof(m_finCount));
 	ofs.write((char*)&m_gillsCount, sizeof(m_gillsCount));
 };//method to save the info to a binary file
@@ -212,17 +217,16 @@ Animal* Horse::clone() {
 	return new Horse(m_color, m_childCount, m_avgLifetime, m_pregnancyTime, m_milkLiters, m_type);
 };
 void Horse::Save(ofstream& ofs) const {
-	Animal::Save(ofs);
+	//Animal::Save(ofs);
 	Mammals::Save(ofs);
-	ofs << strlen(m_type) << endl << m_type << endl;
+	ofs << strlen(m_type) << m_type << endl;
 };//method to save the info to a text file
 void Horse::Load(ifstream& ifs) {
-	Animal::Load(ifs);
+	//Animal::Load(ifs);
 	Mammals::Load(ifs);
 	int len;
 	ifs >> len;
 	m_type = new char[len + 1];
-	ifs.getline(m_type, len);
 	ifs.getline(m_type, len+1);
 	m_type[len] = '\0';
 };//method to load the info from a text file
@@ -254,17 +258,17 @@ Animal* Flamingo::clone() {
 	return new Flamingo(m_color, m_childCount, m_avgLifetime, m_incubationTime, m_avgHeight);
 };
 void Flamingo::Save(ofstream& ofs) const {
-	Animal::Save(ofs);
+	//Animal::Save(ofs);
 	Birds::Save(ofs);
 	ofs << m_avgHeight << endl;
 };//method to save the info to a text file
 void Flamingo::Load(ifstream& ifs) {
-	Animal::Load(ifs);
+	//Animal::Load(ifs);
 	Birds::Load(ifs);
 	ifs >> m_avgHeight;
 };//method to load the info from a text file
 void Flamingo::SaveBin(ofstream& ofs) const {
-	Animal::SaveBin(ofs);
+	//Animal::SaveBin(ofs);
 	Birds::SaveBin(ofs);
 	ofs.write((char*)&m_avgHeight, sizeof(m_avgHeight));
 };//method to save the info to a binary file
@@ -289,17 +293,17 @@ Animal* MammalsFish::clone() {
 	return new MammalsFish(m_color, m_childCount, m_avgLifetime, m_pregnancyTime, m_milkLiters, m_finCount, m_gillsCount);
 };
 void MammalsFish::Save(ofstream& ofs) const {
-	Animal::Save(ofs);
+	//Animal::Save(ofs);
 	Mammals::Save(ofs);
 	Fish::Save(ofs);
 };//method to save the info to a text file
 void MammalsFish::Load(ifstream& ifs) {
-	Animal::Load(ifs);
+	//Animal::Load(ifs);
 	Mammals::Load(ifs);
 	Fish::Load(ifs);
 };//method to load the info from a text file
 void MammalsFish::SaveBin(ofstream& ofs) const {
-	Animal::SaveBin(ofs);
+	//Animal::SaveBin(ofs);
 	Mammals::SaveBin(ofs);
 	Fish::SaveBin(ofs);
 };//method to save the info to a binary file
@@ -383,19 +387,21 @@ Animal* Mermaid::clone() {
 };
 void Mermaid::Save(ofstream& ofs) const {
 	MammalsFish::Save(ofs);
-	ofs << strlen(m_firstName) << endl << m_firstName << endl;
-	ofs << strlen(m_lastName) << endl << m_lastName << endl;
+	ofs << strlen(m_firstName) << m_firstName << endl;
+	ofs << strlen(m_lastName) << m_lastName << endl;
 };//method to save the info to a text file
 void Mermaid::Load(ifstream& ifs) {
 	MammalsFish::Load(ifs);
 	int len;
+
 	ifs >> len;
 	m_firstName = new char[len + 1];
-	ifs >> m_firstName;
+	ifs.getline(m_firstName, len);
 	m_firstName[len] = '\0';
+
 	ifs >> len;
 	m_lastName = new char[len + 1];
-	ifs >> m_lastName;
+	ifs.getline(m_lastName, len);
 	m_lastName[len] = '\0';
 };//method to load the info from a text file
 void Mermaid::SaveBin(ofstream& ofs) const {
@@ -586,11 +592,11 @@ Zoo Zoo::operator+(const Zoo& other) const {
 }; //returns a new Zoo with the properties of this and animals of this and other (need to deep copy the data of other)
 
 void Zoo::Save(ofstream& ofs) const {
-	ofs << strlen(m_name) << endl << m_name << endl;
-	ofs << strlen(m_address) << endl << m_address << endl;
+	ofs << strlen(m_name) << m_name << endl;
+	ofs << strlen(m_address) << " " << m_address << endl;
 	ofs << m_ticketPrice << endl;
-	ofs << strlen(m_openHours) << endl << m_openHours << endl;
-	ofs << strlen(m_closeHours) << endl << m_closeHours << endl;
+	ofs << strlen(m_openHours) << " " << m_openHours << endl;
+	ofs << strlen(m_closeHours) << " " << m_closeHours << endl;
 	ofs << m_numOfAnimals << endl;
 	for (int i = 0; i < m_numOfAnimals; i++)
 	{
@@ -599,30 +605,25 @@ void Zoo::Save(ofstream& ofs) const {
 };//method to save the info to a text file
 void Zoo::Load(ifstream& ifs) {
 	int len;
-	int dumb;
 	ifs >> len;
 	m_name = new char[len+1];
-	ifs.getline(m_name, len);
 	ifs.getline(m_name, len+1);
 	m_name[len] = '\0';
 
 	ifs >> len;
-	m_address = new char[len + 1];
-	ifs.getline(m_address, len + 1); 
-	ifs.getline(m_address, len + 1); 
-	m_address[len] = '\0';
+	m_address = new char[len + 2];
+	ifs.getline(m_address, len + 2); 
+	m_address[len+1] = '\0';
 
 	ifs >> m_ticketPrice;
 
 	ifs >> len;
 	m_openHours = new char[len + 1];
-	ifs.getline(m_openHours, len);
 	ifs.getline(m_openHours, len + 1);
 	m_openHours[len] = '\0';
 
 	ifs >> len;
 	m_closeHours = new char[len + 1];
-	ifs.getline(m_closeHours, len);
 	ifs.getline(m_closeHours, len + 1);
 	m_closeHours[len] = '\0';
 
@@ -633,9 +634,9 @@ void Zoo::Load(ifstream& ifs) {
 	{
 		ifs >> len;
 		type = new char[len + 1];
-		ifs.getline(type, len);
 		ifs.getline(type, len + 1);
 		type[len] = '\0';
+
 		if (strcmp(type, "Horse") == 0)
 			m_animals[i] = new Horse();
 		if (strcmp(type, "Flamingo") == 0)

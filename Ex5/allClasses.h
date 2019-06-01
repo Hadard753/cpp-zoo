@@ -173,7 +173,7 @@ public:
 	virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
 };
 
-class GoldFish : virtual public MammalsFish
+class GoldFish : public MammalsFish
 {
 public:
 	GoldFish();//set the default color to GRAY and other params to 0
@@ -198,7 +198,7 @@ protected:
 	float m_avgLength;
 };
 
-class Mermaid : virtual public MammalsFish
+class Mermaid : public MammalsFish
 {
 public:
 	Mermaid();//set the default color to GRAY and other params to 0

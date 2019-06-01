@@ -1,12 +1,8 @@
-6
-Hi Kef
-15
-Rishon Le Ziyon
+6Hi Kef
+15 Rishon Le Ziyon
 0
-4
-9:00
-5
-21:00
+49:00
+521:00
 1
 8Flamingo
 4PINK
