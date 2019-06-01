@@ -618,14 +618,14 @@ void Zoo::Load(ifstream& ifs) {
 	ifs >> m_ticketPrice;
 
 	ifs >> len;
-	m_openHours = new char[len + 1];
-	ifs.getline(m_openHours, len + 1);
-	m_openHours[len] = '\0';
+	m_openHours = new char[len + 2];
+	ifs.getline(m_openHours, len + 2);
+	m_openHours[len + 1] = '\0';
 
 	ifs >> len;
-	m_closeHours = new char[len + 1];
-	ifs.getline(m_closeHours, len + 1);
-	m_closeHours[len] = '\0';
+	m_closeHours = new char[len + 2];
+	ifs.getline(m_closeHours, len + 2);
+	m_closeHours[len + 1] = '\0';
 
 	ifs >> m_numOfAnimals;
 	m_animals = new Animal*[m_numOfAnimals];
