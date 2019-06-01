@@ -2,7 +2,7 @@
 Zoological Center Tel Aviv Ramat Gan Safari Israel
 23
 1 Hatzvi Ave, Ramat Gan
-0
+90
 4
 8:00
 5
@@ -12,20 +12,24 @@ Zoological Center Tel Aviv Ramat Gan Safari Israel
 Horse
 4
 GRAY
-0
-0
+2
+20
 11
 3
 14
 Selle Francais
 7
 Mermaid
-4
-GRAY
-0
-0
+5
+BROWN
+3
+65.5
 9
 2
+5
+BROWN
+3
+65.5
 2
 4
 5

@@ -25,6 +25,8 @@ public:
 	virtual void Save(ofstream& ofs) const;//method to save the info to a text file
 	virtual void Load(ifstream& ifs);//method to load the info from a text file
 	virtual void SaveBin(ofstream& ofs) const;//method to save the info to a binary file
+	void SaveType(ofstream& ofs) const;
+	void SaveTypeBin(ofstream& ofs) const;
 
 public:
 	const char* GetColor() const;//return the color of the animal
